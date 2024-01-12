@@ -1,5 +1,6 @@
-def stat_summary(campaign_id, start_date, end_date, verbose = True):
-    """Return statistics summary of metrics.
+def stat_summary(campaign_id, start_date, end_date):
+    """
+    Return statistics summary of metrics.
 
     Parameters
     ----------
