@@ -13,3 +13,9 @@ def find_best_and_worst_campaigns(df, start_date, end_date, campaign_ids, metric
 
     Returns:
     dict: A dictionary containing two key-value pairs - 'best_campaign' and 'worst_campaign'. Each is a dictionary itself, containing the 'campaign_id' and its corresponding 'metrics', which include the performance metrics calculated for that campaign.
+
+    Example usage:
+    campaign_ids = ['campaign1', 'campaign2', 'campaign3']
+    result = find_best_and_worst_campaigns(df, pd.to_datetime('2022-01-01'), pd.to_datetime('2022-03-31'), campaign_ids, 'conversion_rate')
+    print(result)
+    """
