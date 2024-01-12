@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 def compute_metrics(data, campaign, start_date, end_date):
     '''
     Computes four metrics from Google Analytics data: 
@@ -33,3 +34,5 @@ def compute_metrics(data, campaign, start_date, end_date):
     Average transaction revenue: $2.33"
 
     '''
+=======
+>>>>>>> ae28539 (delete docstrings in the wrong files)
