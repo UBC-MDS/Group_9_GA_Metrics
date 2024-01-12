@@ -1,14 +1,28 @@
-def daily_plot(campaign_id, start_date, end_date):
+def daily_plot(data, campaign_id, start_date, end_date):
     '''
+
     Returns a time series chart that visualises daily performance of a campaign
     in a period.
 
-            Parameters:
-                    campaign (int): the campaign id of the campaign.
-                    start_date (int): the campaign start date.
-                    end_date (int): the campaign end date.
+        Parameters
+        ----------
+            data : dataframe
+                Dataframe containing information from google analytics
+            campaign_id : int
+                The unique id of the campaign.
+            start_date : int
+                The campaign start date.
+            end_date : int
+                The campaign end date.
+        
+        Returns
+        ----------
+            time-series plot: plot
+                A plot that visualize data points of four metrics.
+                Four metrics:
+                    1. New to return rate
+                    2. Conversion rate
+                    3. Total transaction revenue
+                    4. Average transaction revenue 
 
-            Returns:
-                    a time-series plot: a plot that visualize data points
-                    of four metrics.
     '''
