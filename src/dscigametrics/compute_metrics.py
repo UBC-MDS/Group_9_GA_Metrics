@@ -1,4 +1,4 @@
-def compute_metrics(data, campaign, start_date, end_date):
+def compute_metrics(data, campaign_id, start_date, end_date):
     '''
     
     Computes four metrics from Google Analytics data: 
@@ -12,7 +12,7 @@ def compute_metrics(data, campaign, start_date, end_date):
 
     data : dataframe
         Dataframe containing information from google analytics
-    campaign : int
+    campaign_id : int
         The campaign ID of the campaign in question
     start_date : int
         Date when campaign started
@@ -24,5 +24,5 @@ def compute_metrics(data, campaign, start_date, end_date):
 
     string
         A body of text stating the four computed metrics
-
+        
     '''
