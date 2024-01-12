@@ -16,8 +16,4 @@ def stat_summary(metric, verbose = True):
         Median value of the data points.
     sd
         Standard deviation of the data points.
-
-    Examples
-    --------
-    >>> mean, median, sd = summary_metric2(metric2, verbose = True)
     """
