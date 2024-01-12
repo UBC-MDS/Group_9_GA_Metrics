@@ -8,3 +8,8 @@ def find_best_and_worst_campaigns(df, start_date, end_date, campaign_ids, metric
     df (pandas.DataFrame): A DataFrame containing campaign data. Expected to include columns for dates, campaign IDs, and various metrics like visits, transactions, and revenue.
     start_date (datetime): The start date for the analysis period.
     end_date (datetime): The end date for the analysis period.
+    campaign_ids (list of str): A list of campaign IDs to be analyzed.
+    metric (str): The name of the metric to be used for evaluating campaign performance. This should be one of the keys returned by the 'calculate_campaign_metrics' function, such as 'conversion_rate', 'total_transaction_revenue', etc.
+
+    Returns:
+    dict: A dictionary containing two key-value pairs - 'best_campaign' and 'worst_campaign'. Each is a dictionary itself, containing the 'campaign_id' and its corresponding 'metrics', which include the performance metrics calculated for that campaign.
