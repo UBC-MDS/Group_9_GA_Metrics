@@ -1,19 +1,23 @@
-def stat_summary(metric, verbose = True):
-    """Return statistics summary of metrics
+def stat_summary(campaign_id, start_date, end_date, verbose = True):
+    """Return statistics summary of metrics.
 
     Parameters
     ----------
-    metric : pd.Series
-        Serveral data points represent `metrics` of different time.
-    verbose : boolean
-        Whether or not print out the statistics summary result.
+    campaign_id : int
+        The unique id of the campaign.
+    start_date : int
+        The campaign start date.
+    end_date : int
+        The campaign end date.
 
     Returns
     -------
-    mean
-        Mean value of the data points.
-    median
-        Median value of the data points.
-    sd
-        Standard deviation of the data points.
+    summary_table : pd.DataFrame
+        A pandas dataframe contains the overall statistic summary of the four metrics.
+    mean : dict
+        Mean values of the four metrics. Should look like `{'return': 0.01, 'conversion': 0.05, ...}
+    median : dict
+        Median values of the four metrics.
+    sd : dict
+        Standard deviations of the four metrics.
     """
