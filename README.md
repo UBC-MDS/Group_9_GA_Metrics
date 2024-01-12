@@ -14,6 +14,10 @@ It includes four functions:
 3. `function_3` visualises performance changes of campaign based on four metrics.
 4. `function_4` identifies outliers based on four metrics.
 
+## Where this package fits in
+
+The popularity and influence of Google Analytics means that there is already a decent number of related python packages, such as foofleanalytics, which can be found on PyPI: [https://pypi.org/project/googleanalytics/]. However the majority of these packages provide functionality that allows developers to interact with the Google Analytics API, which presupposes a fairly high level of technical skill. Our package is intended to help users with a novice familiarity with python by operating directly on downloaded GA data sets instead.
+
 ## Installation
 
 ```bash
