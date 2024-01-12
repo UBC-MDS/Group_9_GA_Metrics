@@ -3,8 +3,6 @@ def find_best_and_worst_campaigns(df, start_date, end_date, campaign_ids, metric
 
     Analyzes and identifies the best and worst performing marketing campaigns based on a selected metric from Google Analytics data over a specified date range.
 
-    This function calculates performance metrics for each specified campaign within the date range and then determines the best and worst performing campaigns based on the specified metric.
-
     Parameters
     ----------
     df : pandas.DataFrame
