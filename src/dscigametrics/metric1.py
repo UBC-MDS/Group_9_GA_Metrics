@@ -22,7 +22,7 @@ def compute_metrics(data, campaign, start_date, end_date):
     -------
 
     string
-    A body of text stating the four computed metrics
+        A body of text stating the four computed metrics
 
     Examples
     --------
