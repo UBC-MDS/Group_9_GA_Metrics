@@ -14,7 +14,7 @@ The package also provides convenience functions to compute summary statistics, p
 1. `compute_metrics` summarises general performance of campaign based on four metrics.
 2. `stat_summary` summarises variance of campaign performance based on four metrics.
 3. `daily_plot` visualises performance changes of campaign based on four metrics.
-4. `find_best_and_worst_campaigns` Analyzes marketing campaign performance over a specified date range and identifies the best and worst performing campaigns based on a selected metric.
+4. `find_best_and_worst_campaigns` identifies the best and worst performing campaigns based on a selected metric.
 
 ## Where this package fits in
 
