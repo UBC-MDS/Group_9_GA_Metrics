@@ -27,6 +27,5 @@ def daily_plot(data, campaign_id, start_date, end_date):
 
     Examples
     --------
-    daily_plot(df, 452349492, 20220401, 20220430)
-
+    >>> daily_plot(df, 452349492, 20220401, 20220430)
     """
