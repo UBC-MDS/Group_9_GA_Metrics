@@ -1,7 +1,7 @@
 def daily_plot(data, campaign_id, start_date, end_date):
-    '''
+    """Creating time-series chart
 
-    Returns a time series chart that visualises daily performance of a campaign
+    Returns a time-series chart that visualises daily performance of a campaign
     in a period.
 
     Parameters
@@ -29,4 +29,4 @@ def daily_plot(data, campaign_id, start_date, end_date):
     --------
     daily_plot(df, 452349492, 20220401, 20220430)
 
-    '''
+    """
