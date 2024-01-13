@@ -11,7 +11,7 @@ def compute_metrics(data, campaign_id, start_date, end_date):
     ----------
     data : dataframe
         Dataframe containing information from google analytics
-    campaign : int
+    campaign_id : int
         The campaign ID of the campaign in question
     start_date : int
         Date when campaign started
