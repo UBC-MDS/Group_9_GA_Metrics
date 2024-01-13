@@ -16,7 +16,7 @@ def daily_plot(data, campaign_id, start_date, end_date):
         The campaign end date.
         
     Returns
-    ----------
+    -------
     plot
         A plot that visualize data points of four metrics.
             Four metrics:
