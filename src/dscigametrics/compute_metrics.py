@@ -1,6 +1,6 @@
 def compute_metrics(data, campaign_id, start_date, end_date):
-    '''
-    
+    """Computes the key metrics.
+
     Computes four metrics from Google Analytics data: 
         1. New to return rate
         2. Conversion rate
@@ -9,10 +9,9 @@ def compute_metrics(data, campaign_id, start_date, end_date):
 
     Parameters
     ----------
-
     data : dataframe
         Dataframe containing information from google analytics
-    campaign_id : int
+    campaign : int
         The campaign ID of the campaign in question
     start_date : int
         Date when campaign started
@@ -21,8 +20,14 @@ def compute_metrics(data, campaign_id, start_date, end_date):
 
     Returns
     -------
-
     string
         A body of text stating the four computed metrics
-        
-    '''
+
+    Example
+    -------
+    >>> compute_metrics(df, 11111111, 20230101, 20231231)
+        "New to return rate: 1.3
+        Conversion rate: 0.23
+        Total transaction revenue: $100
+        Average transaction revenue: $2.33"
+    """
