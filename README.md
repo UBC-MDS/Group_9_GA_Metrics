@@ -20,19 +20,15 @@ The package also provides convenience functions to compute summary statistics, p
 
 The popularity and influence of Google Analytics means that there is already a decent number of related python packages, such as googleanalytics, which can be found on PyPI: [https://pypi.org/project/googleanalytics/]. However the majority of these packages provide functionality that allows developers to interact with the Google Analytics API, which presupposes a fairly high level of technical skill. Our package is intended to help users with a novice familiarity with python by operating directly on downloaded GA data sets instead.
 
-## Where this package fits in
-
-The popularity and influence of Google Analytics means that there is already a decent number of related python packages, such as foofleanalytics, which can be found on PyPI: [https://pypi.org/project/googleanalytics/]. However the majority of these packages provide functionality that allows developers to interact with the Google Analytics API, which presupposes a fairly high level of technical skill. Our package is intended to help users with a novice familiarity with python by operating directly on downloaded GA data sets instead.
-
 ## Installation
 
 ```bash
 $ pip install dscigametrics
 ```
 
-## Usage
+## Main Contributor
 
-- TODO
+Beth Ou-Yang, Ian MacCarthy, Yili Tang, Weilin Han
 
 ## Contributing
 
