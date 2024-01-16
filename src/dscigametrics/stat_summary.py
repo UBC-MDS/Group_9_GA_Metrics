@@ -21,7 +21,7 @@ def stat_summary(data, campaign_id, start_date, end_date):
     Returns
     -------
     summary_table : pd.DataFrame
-        A pandas dataframe contains the mean, median and standard deviation of the four metrics.
+        A pandas dataframe contains the mean, median and standard deviation of the four metrics of each day.
         Four metrics:
             1. New to return rate
             2. Conversion rate
@@ -37,3 +37,5 @@ def stat_summary(data, campaign_id, start_date, end_date):
         Median       0.02        0.04         238           120
         SD           1.43        0.66         1.62          0.77
     """
+
+    
