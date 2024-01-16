@@ -57,7 +57,6 @@ def stat_summary(data, campaign_id, start_date, end_date):
     # Filter data according to the specified condition: dates and campaign_id.
     data = data[(data['trafficSource.adwordsClickInfo.campaignId'] == campaign_id) & (data['date'] >= start_date) & (data['date'] <= end_date)]
 
-    # Aggregate the 4 metrics by date
     return_rates = data.groupby(['date'])[['date', 'totals.newVisits']].apply(get_return_rate).reset_index()[0]
     conversion_rates = data.groupby(['date'])[['date', 'totals.transactions', 'totals.visits']].apply(get_conversion).reset_index()[0]
     ttl_transac_revenues = data.fillna(0.0).groupby(['date'])['totals.transactionRevenue'].sum().reset_index().iloc[:, 1]
