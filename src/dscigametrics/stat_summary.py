@@ -48,17 +48,17 @@ def stat_summary(data, campaign_id, start_date, end_date):
     
     data = data[(data['trafficSource.adwordsClickInfo.campaignId'] == campaign_id) & (data['date'] >= start_date) & (data['date'] <= end_date)]
 
-    return_rates = data.groupby(['date'])[['date', 'totals.newVisits']].apply(get_return_rate).reset_index()[0].to_list()
-    conversion_rates = data.groupby(['date'])[['date', 'totals.transactions']].apply(get_conversion).reset_index()[0].to_list()
-    ttl_transac_revenues = data.fillna(0.0).groupby(['date'])['totals.transactionRevenue'].sum().reset_index().iloc[:, 1].to_list()
-    avg_transac_revenues = data.fillna(0.0).groupby(['date'])['totals.transactionRevenue'].mean().reset_index().iloc[:, 1].to_list()
+    return_rates = data.groupby(['date'])[['date', 'totals.newVisits']].apply(get_return_rate).reset_index()[0]
+    conversion_rates = data.groupby(['date'])[['date', 'totals.transactions', 'totals.visits']].apply(get_conversion).reset_index()[0]
+    ttl_transac_revenues = data.fillna(0.0).groupby(['date'])['totals.transactionRevenue'].sum().reset_index().iloc[:, 1]
+    avg_transac_revenues = data.fillna(0.0).groupby(['date'])['totals.transactionRevenue'].mean().reset_index().iloc[:, 1]
 
     output = pd.DataFrame(
                 {
-                    'return_rate': [return_rates.mean(), return_rates.median(),return_rates.std()],
-                    'conversion_rate': [conversion_rates.mean(), conversion_rates.median(),conversion_rates.std()],
-                    'ttl_revenue': [ttl_transac_revenues.mean(), ttl_transac_revenues.median(),ttl_transac_revenues.std()],
-                    'avg_revenue': [avg_transac_revenues.mean(), avg_transac_revenues.median(),avg_transac_revenues.std()]
+                    'return_rate': [return_rates.mean(), return_rates.median(), np.std(return_rates)],
+                    'conversion_rate': [conversion_rates.mean(), conversion_rates.median(), np.std(conversion_rates)],
+                    'ttl_revenue': [ttl_transac_revenues.mean(), ttl_transac_revenues.median(), np.std(ttl_transac_revenues)],
+                    'avg_revenue': [avg_transac_revenues.mean(), avg_transac_revenues.median(), np.std(avg_transac_revenues)]
                 },
                 index = ['Mean', 'Median', 'Standard Deviation']
             )
