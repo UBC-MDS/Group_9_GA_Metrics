@@ -1,15 +1,13 @@
 def find_best_and_worst_campaigns(data, start_date, end_date, campaign_ids, metric):
-    """Analyzes the extreme performing values of marketing campaigns.
-
-    Analyzes and identifies the best and worst performing marketing campaigns based on a selected metric from Google Analytics data over a specified date range.
+    """Analyzes and identifies the best and worst performing marketing campaigns based on a selected metric 
 
     Parameters
     ----------
-    data : pandas.DataFrame
-        A DataFrame containing campaign data. Expected to include columns for dates, campaign IDs, and various metrics like visits, transactions, and revenue.
-    start_date : datetime
+    data : dataframe
+        Dataframe containing information from google analytics
+    start_date : string
         The start date for the analysis period.
-    end_date : datetime
+    end_date : string
         The end date for the analysis period.
     campaign_ids : list of str
         A list of campaign IDs to be analyzed.
