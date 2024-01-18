@@ -1,13 +1,13 @@
-def find_best_and_worst_campaigns(data, start_date, end_date, campaign_ids, metric):
+def find_campaigns(data, start_date, end_date, campaign_ids, metric):
     """Analyzes and identifies the best and worst performing marketing campaigns based on a selected metric 
 
     Parameters
     ----------
     data : dataframe
         Dataframe containing information from google analytics
-    start_date : string
+    start_date : datetime
         The start date for the analysis period.
-    end_date : string
+    end_date : datetime
         The end date for the analysis period.
     campaign_ids : list of str
         A list of campaign IDs to be analyzed.
