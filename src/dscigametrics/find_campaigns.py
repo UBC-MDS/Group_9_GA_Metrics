@@ -2,7 +2,6 @@
 import pandas as pd
 import numpy as np
 
-
 def find_campaigns(data, start_date, end_date, campaign_ids, metric):
     """
 
