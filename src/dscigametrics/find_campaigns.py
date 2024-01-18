@@ -41,17 +41,6 @@ def find_campaigns(data, start_date, end_date, campaign_ids, metric):
     if not isinstance(metric, str) or metric not in valid_metrics:
         raise ValueError(f"metric must be one of {valid_metrics}")
 
-    if start_date > end_date:
-        raise ValueError("Start date must be earlier than end date")
-
-    start_date = pd.to_datetime(start_date, format='%Y%m%d')
-    end_date = pd.to_datetime(end_date, format='%Y%m%d')
-    toy_data = data[['trafficSource.adwordsClickInfo.campaignId', 'date', 'totals.newVisits', 'totals.transactions', 'totals.visits', 'totals.transactionRevenue']]
-    toy_data = toy_data.fillna(0.0)
-    toy_data.columns = ['campaignId', 'date', 'newVisits', 'transactions', 'visits', 'transactionRevenue' ]
-    toy_data['date'] = pd.to_datetime(toy_data['date'], format='%Y%m%d')
-    filtered_data = toy_data[(toy_data['date'] >= start_date) & (toy_data['date'] <= end_date)]
-    
     campaign_metrics = {}
 
     for cid in campaign_ids:
