@@ -1,13 +1,12 @@
-from dscigametrics import dscigametrics
 import pytest
 import pandas as pd
 from dscigametrics.find_campaigns import find_campaigns
-# from dscigametrics.compute_metrics import compute_metrics
+
 
 
 def test_find_campaigns():
     
-    data = pd.read_csv('toy_data_large.csv')
+    data = pd.read_csv('tests/toy_data_test.csv')
 
     # Test with invalid date format
     with pytest.raises(ValueError) as excinfo:
@@ -23,7 +22,3 @@ def test_find_campaigns():
     with pytest.raises(TypeError) as excinfo:
         find_campaigns(data, '2023-01-01', '2023-12-31', 'not-a-list', 'conversion_rate')
     assert "campaign_ids must be a list of integers" in str(excinfo.value)
-
-
-if __name__ == "__main__":
-    pytest.main()

@@ -1,7 +1,7 @@
 
 import pandas as pd
 import numpy as np
-from compute_metrics_temp import compute_metrics
+from dscigametrics.compute_metrics_temp import compute_metrics
 
 def find_campaigns(data, start_date, end_date, campaign_ids, metric):
     """Analyzes and identifies the best and worst performing marketing campaigns based on a selected metric 
