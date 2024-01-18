@@ -1,3 +1,7 @@
+import pandas as pd
+import numpy as np
+
+
 def compute_metrics(data, campaign_id, start_date, end_date):
     """Computes the key metrics.
 
