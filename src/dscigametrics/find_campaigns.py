@@ -26,7 +26,9 @@ def find_campaigns(data, start_date, end_date, campaign_ids, metric):
 
     Examples
     --------
-    >>> output_dict = find_best_and_worst_campaigns(data, 11111111, 20170817, 20170820, 'conversion_rate')
+    >>> output_dict = find_best_and_worst_campaigns(data, '2023-01-01', '2023-12-31', [100, 101, 102, 103, 104], 'conversion_rate')
+    {'best_campaign': {'id': 104, 'value': 0.25}, 'worst_campaign': {'id': 100, 'value': 0.15384615384615385}}
+
     """
     if not isinstance(start_date, (str, pd.Timestamp)) or not isinstance(end_date, (str, pd.Timestamp)):
         raise ValueError("start_date and end_date must be strings or pandas Timestamps")
@@ -43,6 +45,13 @@ def find_campaigns(data, start_date, end_date, campaign_ids, metric):
     valid_metrics = ['new_to_return_rate', 'conversion_rate', 'total_transaction_revenue', 'average_transaction_revenue']
     if not isinstance(metric, str) or metric not in valid_metrics:
         raise ValueError(f"metric must be one of {valid_metrics}")
+    
+    if start_date > end_date:
+        raise ValueError("Start date must be earlier than end date")
+
+    for cid in campaign_ids:
+        if cid not in data['campaignId'].values:
+            raise ValueError(f"Campaign ID {cid} not found in data")
 
     campaign_metrics = {}
     for cid in campaign_ids:
