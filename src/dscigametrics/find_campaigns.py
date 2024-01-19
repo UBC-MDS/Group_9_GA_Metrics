@@ -1,7 +1,7 @@
 
 import pandas as pd
 import numpy as np
-from dscigametrics.compute_metrics_temp import compute_metrics
+
 
 def find_campaigns(data, start_date, end_date, campaign_ids, metric):
     """Analyzes and identifies the best and worst performing marketing campaigns based on a selected metric 
@@ -33,12 +33,6 @@ def find_campaigns(data, start_date, end_date, campaign_ids, metric):
     if not isinstance(start_date, (int, pd.Timestamp)) or not isinstance(end_date, (int, pd.Timestamp)):
         raise ValueError("start_date and end_date must be int or pandas Timestamps")
 
-    try:
-        start_date = pd.to_datetime(start_date, format='%Y%m%d')
-        end_date = pd.to_datetime(end_date, format='%Y%m%d')
-    except ValueError:
-        raise ValueError("Invalid start_date or end_date format")
-
     if not isinstance(campaign_ids, list) or not all(isinstance(x, int) for x in campaign_ids):
         raise TypeError("campaign_ids must be a list of integers")
 
@@ -46,10 +40,12 @@ def find_campaigns(data, start_date, end_date, campaign_ids, metric):
     if not isinstance(metric, str) or metric not in valid_metrics:
         raise ValueError(f"metric must be one of {valid_metrics}")
     
+    
     if start_date > end_date:
         raise ValueError("Start date must be earlier than end date")
 
-
+    start_date = pd.to_datetime(start_date, format='%Y%m%d')
+    end_date = pd.to_datetime(end_date, format='%Y%m%d')
     toy_data = data[['trafficSource.adwordsClickInfo.campaignId', 'date', 'totals.newVisits', 'totals.transactions', 'totals.visits', 'totals.transactionRevenue']]
     toy_data = toy_data.fillna(0.0)
     toy_data.columns = ['campaignId', 'date', 'newVisits', 'transactions', 'visits', 'transactionRevenue' ]
