@@ -12,9 +12,8 @@ def compute_metrics(data, campaign_id, start_date, end_date):
 
     Parameters
     ----------
-    data : string
-        url or file pathway pointing to a csv file containing 
-        information from google analytics
+    data : pandas dataframe
+        dataframe containing information from google analytics
     campaign_id : int
         The campaign ID of the campaign in question
     start_date : int
