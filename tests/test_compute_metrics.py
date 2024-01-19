@@ -1,8 +1,8 @@
-from src.dscigametrics.compute_metrics import compute_metrics
+from dscigametrics.compute_metrics import compute_metrics
 import pytest
 import pandas as pd
 
-df = pd.read_csv('ga_metrics_test_data_small.csv')
+df = pd.read_csv('ga_metrics_test_data.csv')
 
 def test_metric_computation():
     actual =  compute_metrics(df, 123851219, 20220801, 20220801)
