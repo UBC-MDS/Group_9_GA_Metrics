@@ -60,13 +60,13 @@ def compute_metrics(data, campaign_id, start_date, end_date):
 
     def average_transaction_revenue(df):
         
-        transactions_count = df['totals.transactions'].shape[0]
+        transactions_count = df['totals.transactions'].sum()
         revenue = df['totals.transactionRevenue'].sum()
 
         return revenue/transactions_count
 
     def new_to_return(df):
-        
+
         visits_count = df['totals.newVisits'].shape[0]
         new_count = df['totals.newVisits'].sum()
         rate = new_count / visits_count
