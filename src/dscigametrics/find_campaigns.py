@@ -4,7 +4,9 @@ import numpy as np
 
 
 def find_campaigns(data, start_date, end_date, campaign_ids, metric):
-    """Analyzes and identifies the best and worst performing marketing campaigns based on a selected metric 
+    """
+
+    Analyzes and identifies the best and worst performing marketing campaigns based on a selected metric 
 
     Parameters
     ----------
@@ -26,8 +28,8 @@ def find_campaigns(data, start_date, end_date, campaign_ids, metric):
 
     Examples
     --------
-    >>> output_dict = find_best_and_worst_campaigns(data, '2023-01-01', '2023-12-31', [100, 101, 102, 103, 104], 'conversion_rate')
-    {'best_campaign': {'id': 104, 'value': 0.25}, 'worst_campaign': {'id': 100, 'value': 0.15384615384615385}}
+    output_dict = find_best_and_worst_campaigns(data, 20220801, 20220825, [219011657, 140569061, 215934049, 123851219], 'conversion_rate')
+    result: {'best_campaign': {'id': 123851219, 'value': 0.116}, 'worst_campaign': {'id': 219011657, 'value': 0.056}}
 
     """
     if not isinstance(start_date, (int, pd.Timestamp)) or not isinstance(end_date, (int, pd.Timestamp)):
@@ -39,8 +41,7 @@ def find_campaigns(data, start_date, end_date, campaign_ids, metric):
     valid_metrics = ['return_rate', 'conversion_rate', 'total_trans_revenue', 'avg_trans_revenue']
     if not isinstance(metric, str) or metric not in valid_metrics:
         raise ValueError(f"metric must be one of {valid_metrics}")
-    
-    
+
     if start_date > end_date:
         raise ValueError("Start date must be earlier than end date")
 
@@ -53,7 +54,12 @@ def find_campaigns(data, start_date, end_date, campaign_ids, metric):
     filtered_data = toy_data[(toy_data['date'] >= start_date) & (toy_data['date'] <= end_date)]
     
     campaign_metrics = {}
+
     for cid in campaign_ids:
+        # test for cid is valid
+        if cid not in filtered_data['campaignId'].values:
+            raise ValueError(f"Campaign ID {cid} not found in data")
+        
         metrics = {}
         data = filtered_data[filtered_data['campaignId'] == cid]
         metrics['return_rate'] = data['newVisits'].mean()
