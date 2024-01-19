@@ -44,7 +44,13 @@ def stat_summary(data, campaign_id, start_date, end_date):
     def get_return_rate(data):
         return data['totals.newVisits'].fillna(0.0).mean()
     def get_conversion(data):
-        return sum(data['totals.transactions'].fillna(0.0)) / sum(data['totals.visits'])
+        if sum(data['totals.visits'] != 0):
+            return sum(data['totals.transactions'].fillna(0.0)) / sum(data['totals.visits'])
+        else:
+            return 0
+    
+    if not isinstance(data, pd.DataFrame):
+        raise TypeError("Input data type should be pandas.DataFrame")
     
     data = data[(data['trafficSource.adwordsClickInfo.campaignId'] == campaign_id) & (data['date'] >= start_date) & (data['date'] <= end_date)]
 
