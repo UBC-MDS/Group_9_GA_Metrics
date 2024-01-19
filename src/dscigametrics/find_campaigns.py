@@ -10,11 +10,11 @@ def find_campaigns(data, start_date, end_date, campaign_ids, metric):
     ----------
     data : dataframe
         Dataframe containing information from google analytics
-    start_date : datetime
+    start_date : int or timestamp
         The start date for the analysis period.
-    end_date : datetime
+    end_date : int or timestamp
         The end date for the analysis period.
-    campaign_ids : list of str
+    campaign_ids : list of int
         A list of campaign IDs to be analyzed.
     metric : str
         The name of the metric to be used for evaluating campaign performance. 
@@ -30,32 +30,40 @@ def find_campaigns(data, start_date, end_date, campaign_ids, metric):
     {'best_campaign': {'id': 104, 'value': 0.25}, 'worst_campaign': {'id': 100, 'value': 0.15384615384615385}}
 
     """
-    if not isinstance(start_date, (str, pd.Timestamp)) or not isinstance(end_date, (str, pd.Timestamp)):
-        raise ValueError("start_date and end_date must be strings or pandas Timestamps")
+    if not isinstance(start_date, (int, pd.Timestamp)) or not isinstance(end_date, (int, pd.Timestamp)):
+        raise ValueError("start_date and end_date must be int or pandas Timestamps")
 
     try:
-        start_date = pd.to_datetime(start_date)
-        end_date = pd.to_datetime(end_date)
+        start_date = pd.to_datetime(start_date, format='%Y%m%d')
+        end_date = pd.to_datetime(end_date, format='%Y%m%d')
     except ValueError:
         raise ValueError("Invalid start_date or end_date format")
 
     if not isinstance(campaign_ids, list) or not all(isinstance(x, int) for x in campaign_ids):
         raise TypeError("campaign_ids must be a list of integers")
 
-    valid_metrics = ['new_to_return_rate', 'conversion_rate', 'total_transaction_revenue', 'average_transaction_revenue']
+    valid_metrics = ['return_rate', 'conversion_rate', 'total_trans_revenue', 'avg_trans_revenue']
     if not isinstance(metric, str) or metric not in valid_metrics:
         raise ValueError(f"metric must be one of {valid_metrics}")
     
     if start_date > end_date:
         raise ValueError("Start date must be earlier than end date")
 
-    for cid in campaign_ids:
-        if cid not in data['campaignId'].values:
-            raise ValueError(f"Campaign ID {cid} not found in data")
 
+    toy_data = data[['trafficSource.adwordsClickInfo.campaignId', 'date', 'totals.newVisits', 'totals.transactions', 'totals.visits', 'totals.transactionRevenue']]
+    toy_data = toy_data.fillna(0.0)
+    toy_data.columns = ['campaignId', 'date', 'newVisits', 'transactions', 'visits', 'transactionRevenue' ]
+    toy_data['date'] = pd.to_datetime(toy_data['date'], format='%Y%m%d')
+    filtered_data = toy_data[(toy_data['date'] >= start_date) & (toy_data['date'] <= end_date)]
+    
     campaign_metrics = {}
     for cid in campaign_ids:
-        metrics = compute_metrics(data, cid, start_date, end_date)
+        metrics = {}
+        data = filtered_data[filtered_data['campaignId'] == cid]
+        metrics['return_rate'] = data['newVisits'].mean()
+        metrics['conversion_rate'] = sum(data['transactions']) / sum(data['visits'])
+        metrics['total_trans_revenue']  = data['transactionRevenue'].sum()
+        metrics['avg_trans_revenue']  = data['transactionRevenue'].mean()
         campaign_metrics[cid] = metrics.get(metric, 0)
 
     best_campaign = max(campaign_metrics, key=campaign_metrics.get)
