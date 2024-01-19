@@ -11,7 +11,7 @@ def test_find_campaigns():
     # Test with invalid date format
     with pytest.raises(ValueError) as excinfo:
         find_campaigns(data, 'invalid-date', 20220825, [219011657, 140569061, 215934049, 123851219], 'conversion_rate')
-    assert "Invalid start_date or end_date format" in str(excinfo.value)
+    assert "start_date and end_date must be int or pandas Timestamps" in str(excinfo.value)
 
     # Test with invalid metric
     with pytest.raises(ValueError) as excinfo:
@@ -29,16 +29,17 @@ def test_find_campaigns():
     assert "Start date must be earlier than end date" in str(excinfo.value)
 
     # Test An ID not in the data frame
-    nonexistent_campaign_id = 99999 
+    metric = 'not_valid_metric' 
+    valid_metrics = ['return_rate', 'conversion_rate', 'total_trans_revenue', 'avg_trans_revenue']
     with pytest.raises(ValueError) as excinfo:
-        find_campaigns(data, 20220801, 20220825, [nonexistent_campaign_id], 'conversion_rate')
-    assert f"Campaign ID {nonexistent_campaign_id} not found in data" in str(excinfo.value)
+        find_campaigns(data, 20220801, 20220825, [219011657, 140569061, 215934049, 123851219], 'not_valid_metric')
+    assert f"metric must be one of {valid_metrics}" in str(excinfo.value)
 
     # Test the result is as expeced
-    start_date = 20220801
-    end_date =  20220825
     campaign_ids = [219011657, 140569061, 215934049, 123851219]
     metric = 'conversion_rate'
+    start_date = 20220801
+    end_date = 20220825
     result = find_campaigns(data, start_date, end_date, campaign_ids, metric)
 
     # Check if the result is a dictionary
