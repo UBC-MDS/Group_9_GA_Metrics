@@ -41,6 +41,7 @@ def stat_summary(data, campaign_id, start_date, end_date):
         SD           1.43        0.66         1.62          0.77
     """
 
+    # declare functions which calculate return and conversion rates and to use in the "groupby -> aggregate" later.
     def get_return_rate(data):
         return data['totals.newVisits'].fillna(0.0).mean()
     def get_conversion(data):
@@ -49,16 +50,21 @@ def stat_summary(data, campaign_id, start_date, end_date):
         else:
             return 0
     
+    # Check the input type to prevent incorrect inputs
     if not isinstance(data, pd.DataFrame):
         raise TypeError("Input data type should be pandas.DataFrame")
     
+    # Filter data according to the specified condition: dates and campaign_id.
     data = data[(data['trafficSource.adwordsClickInfo.campaignId'] == campaign_id) & (data['date'] >= start_date) & (data['date'] <= end_date)]
 
+    # Aggregate the 4 metrics by date
     return_rates = data.groupby(['date'])[['date', 'totals.newVisits']].apply(get_return_rate).reset_index()[0]
     conversion_rates = data.groupby(['date'])[['date', 'totals.transactions', 'totals.visits']].apply(get_conversion).reset_index()[0]
     ttl_transac_revenues = data.fillna(0.0).groupby(['date'])['totals.transactionRevenue'].sum().reset_index().iloc[:, 1]
     avg_transac_revenues = data.fillna(0.0).groupby(['date'])['totals.transactionRevenue'].mean().reset_index().iloc[:, 1]
 
+    # Calculate the mean, median, and standard deviation of the aggregate values, 
+    # and transform then into a pandas dataframe as the final output.
     output = pd.DataFrame(
                 {
                     'return_rate': [return_rates.mean(), return_rates.median(), np.std(return_rates)],
