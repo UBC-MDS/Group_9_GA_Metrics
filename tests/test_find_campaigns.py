@@ -1,6 +1,6 @@
 import pytest
 import pandas as pd
-from dscigametrics.find_campaigns import find_campaigns
+from dscigametrics.find_campaigns import *
 
 
 
@@ -35,6 +35,12 @@ def test_find_campaigns():
         find_campaigns(data, 20220801, 20220825, [219011657, 140569061, 215934049, 123851219], 'not_valid_metric')
     assert f"metric must be one of {valid_metrics}" in str(excinfo.value)
 
+    # Test valid campaign_id
+    nonexistent_campaign_id = 9999  
+    with pytest.raises(ValueError) as excinfo:
+        find_campaigns(data, 20220801, 20220825, [nonexistent_campaign_id], 'conversion_rate')
+    assert f"Campaign ID {nonexistent_campaign_id} not found in data" in str(excinfo.value)
+
     # Test the result is as expeced
     campaign_ids = [219011657, 140569061, 215934049, 123851219]
     metric = 'conversion_rate'
@@ -42,10 +48,10 @@ def test_find_campaigns():
     end_date = 20220825
     result = find_campaigns(data, start_date, end_date, campaign_ids, metric)
 
-    # Check if the result is a dictionary
+    # Test if the result is a dictionary
     assert isinstance(result, dict)
     
-    # Check the structure and values of the output
+    # Test the structure and values of the output
     expected_output = {
         'best_campaign': {'id': 123851219, 'value': 0.116},
         'worst_campaign': {'id': 219011657, 'value': 0.056}}
