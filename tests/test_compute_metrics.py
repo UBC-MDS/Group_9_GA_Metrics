@@ -2,14 +2,14 @@ from dscigametrics.compute_metrics import compute_metrics
 import pytest
 import pandas as pd
 
-df = pd.read_csv('ga_metrics_test_data.csv')
+df = pd.read_csv('tests/ga_metrics_test_data.csv')
 
 def test_metric_computation():
     actual =  compute_metrics(df, 123851219, 20220801, 20220801)
     expected = {'conversion rate': 0.2,
                 'new to return rate': 0.9,
                 'total transaction revenue': 356.0,
-                'average transaction revenue': 35.6}
+                'average transaction revenue': 178.0}
     assert actual == expected, 'Metrics were not computed correctly!'
 
 def test_data_check():
