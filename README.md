@@ -2,7 +2,7 @@
 
 `dscigametrics` enables users to easily compute four important metrics:
 
-1. Ratio of new to returning visitors: measures the ratio of new users to returning users of each campaign in certain period. 
+1. Ratio of new to returning visitors: measures the ratio of new users to returning users of each campaign in certain period.
 2. Conversion rate: measures the percentage of users who complete a specific desired action of each campaign in certain period.
 3. Total transaction revenue: measures total transaction revenue of each campaign in certain period.
 4. Average transaction revenue: measures average transaction revenue of each campaign in certain period.
@@ -21,9 +21,28 @@ The package also provides convenience functions to compute summary statistics, p
 The popularity and influence of Google Analytics means that there is already a decent number of related python packages, such as googleanalytics, which can be found on PyPI: [https://pypi.org/project/googleanalytics/]. However the majority of these packages provide functionality that allows developers to interact with the Google Analytics API, which presupposes a fairly high level of technical skill. Our package is intended to help users with a novice familiarity with python by operating directly on downloaded GA data sets instead.
 
 ## Installation
-
+Since the package has not uploaded to PyPI, this is not feasible for now. Please see the **developer installation instructions** to install it.
 ```bash
 $ pip install dscigametrics
+```
+
+### Developer Installation Instruction
+#### Step 1: Clone the Repository
+```bash
+git clone git@github.com:UBC-MDS/Group_9_GA_Metrics.git
+cd Group_9_GA_Metrics  # Navigate to the cloned repository directory
+```
+
+#### Step 2: Create and Activate the Conda Environment
+```bash
+$ conda env create -f environment.yml  # Create Conda environment
+$ conda activate ga_package  # Activate the Conda environment
+```
+
+#### Step 3: Install the Package Using Poetry
+Ensure the Conda environment is activated. You should see **Group_9_GA_Metrics** in the terminal prompt.
+```bash
+$ poetry install  # Install the package using Poetry
 ```
 
 ## Main Contributor
