@@ -14,7 +14,7 @@ The package also provides convenience functions to compute summary statistics, p
 1. `compute_metrics` summarises general performance of campaign based on four metrics.
 2. `stat_summary` summarises variance of campaign performance based on four metrics.
 3. `daily_plot` visualises performance changes of campaign based on four metrics.
-4. `find_best_and_worst_campaigns` identifies the best and worst performing campaigns based on a selected metric.
+4. `find_campaigns` identifies the best and worst performing campaigns based on a selected metric.
 
 ## Where this package fits in
 
@@ -44,6 +44,11 @@ Ensure the Conda environment is activated. You should see **Group_9_GA_Metrics**
 ```bash
 $ poetry install  # Install the package using Poetry
 ```
+## Online Documentation
+
+You can read the documentation on [Read the Docs](https://group-9-ga-metrics.readthedocs.io/en/latest/)
+
+[![Documentation Status](https://readthedocs.org/projects/group-9-ga-metrics/badge/?version=latest)](https://group-9-ga-metrics.readthedocs.io/en/latest/?badge=latest)
 
 ## Main Contributor
 
