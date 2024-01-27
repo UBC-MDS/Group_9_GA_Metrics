@@ -44,6 +44,11 @@ Ensure the Conda environment is activated. You should see **Group_9_GA_Metrics**
 ```bash
 $ poetry install  # Install the package using Poetry
 ```
+## Online Documentation
+
+You can read the documentation on [Read the Docs](https://group-9-ga-metrics.readthedocs.io/en/latest/)
+
+[![Documentation Status](https://readthedocs.org/projects/group-9-ga-metrics/badge/?version=latest)](https://group-9-ga-metrics.readthedocs.io/en/latest/?badge=latest)
 
 ## Main Contributor
 
