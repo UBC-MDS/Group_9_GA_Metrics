@@ -81,8 +81,8 @@ def daily_plot(data, campaign_id, start_date, end_date, width=600, height=1000):
     base = alt.Chart().mark_line().encode(
     x='date',
     ).properties(
-        width=800,
-        height=200
+        width=width,
+        height=height
     )
 
     return_rate_chart = base.encode(alt.Y('return_rates:Q').title('Return Rate')).properties(title='Return Rates by date')
