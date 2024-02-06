@@ -78,7 +78,7 @@ summary = stat_summary(data, campaign_id, start_date, end_date)
 plot = daily_plot(data, campaign_id, start_date, end_date, width=300, height=800)
 ```
 
-<img src="[https://github.com/UBC-MDS/Group_9_GA_Metrics/blob/main/img/scatter_plot.jpg?raw=true](https://github.com/UBC-MDS/Group_9_GA_Metrics/blob/main/img/scatter_plot.jpg)" width = "300", height="800">
+<img src="https://github.com/UBC-MDS/Group_9_GA_Metrics/blob/main/img/scatter_plot.jpg?raw=true" width="300" height="800">
 
 
 **Find the best and worst performance campaign:**
