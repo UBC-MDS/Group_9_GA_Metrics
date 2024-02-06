@@ -1,6 +1,11 @@
-[![Documentation Status](https://readthedocs.org/projects/group-9-ga-metrics/badge/?version=latest)](https://group-9-ga-metrics.readthedocs.io/en/latest/?badge=latest)
-
 # dscigametrics
+
+<figure>
+    <img src="[https://github.com/UBC-MDS/doeasyeda/blob/main/img/logo2.png?raw=true](https://github.com/UBC-MDS/Group_9_GA_Metrics/blob/min-max/img/gsci.jpg)" alt="Alt text for image" width="200" height="200">
+</figure>
+
+
+[![Documentation Status](https://readthedocs.org/projects/group-9-ga-metrics/badge/?version=latest)](https://group-9-ga-metrics.readthedocs.io/en/latest/?badge=latest)
 
 `dscigametrics`, or *Data Science Google Analytics Metrics*, is a python package that provides a set of ready-made functions that can help users with minimual coding skills easily digest and analyse advertising data obtained from Google Analytics. While Google Analytics allows users to easily download data as a csv file, the resulting spreadsheet is an intimidating and unituitive block of dense information. Instead of trying to analyse this in excel, users can instead load it into a python script as a pandas dataframe and let this package do the analysis work for them! 
 
