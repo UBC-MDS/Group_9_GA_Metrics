@@ -1,7 +1,7 @@
 import pandas as pd
 import altair as alt
 
-def daily_plot(data, campaign_id, start_date, end_date, width=600, height=1000):
+def daily_plot(data, campaign_id, start_date, end_date, width=600, height=300):
     """Creating time-series chart
 
     Returns a time-series chart that visualises daily performance of a campaign
@@ -81,8 +81,8 @@ def daily_plot(data, campaign_id, start_date, end_date, width=600, height=1000):
     base = alt.Chart().mark_line().encode(
     x='date',
     ).properties(
-        width=800,
-        height=200
+        width=width,
+        height=height
     )
 
     return_rate_chart = base.encode(alt.Y('return_rates:Q').title('Return Rate')).properties(title='Return Rates by date')
