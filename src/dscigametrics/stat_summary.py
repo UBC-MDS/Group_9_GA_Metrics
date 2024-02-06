@@ -67,9 +67,9 @@ def stat_summary(data, campaign_id, start_date, end_date):
     output = pd.DataFrame(
                 {
                     'return_rate': [return_rates.mean(), return_rates.median(), np.std(return_rates)],
-                    'conversion_rate': [conversion_rates.mean(), conversion_rates.median(), np.std(conversion_rates)],
-                    'ttl_revenue': [ttl_transac_revenues.mean(), ttl_transac_revenues.median(), np.std(ttl_transac_revenues)],
-                    'avg_revenue': [avg_transac_revenues.mean(), avg_transac_revenues.median(), np.std(avg_transac_revenues)]
+                    'conversion_rate': [conversion_rates.mean(), conversion_rates.median(), np.std(conversion_rates, ddof=1)],
+                    'ttl_revenue': [ttl_transac_revenues.mean(), ttl_transac_revenues.median(), np.std(ttl_transac_revenues, ddof=1)],
+                    'avg_revenue': [avg_transac_revenues.mean(), avg_transac_revenues.median(), np.std(avg_transac_revenues, ddof=1)]
                 },
                 index = ['Mean', 'Median', 'Standard Deviation']
             )
