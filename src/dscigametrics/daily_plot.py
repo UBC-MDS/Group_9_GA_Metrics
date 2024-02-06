@@ -1,7 +1,7 @@
 import pandas as pd
 import altair as alt
 
-def daily_plot(data, campaign_id, start_date, end_date, width=600, height=1000):
+def daily_plot(data, campaign_id, start_date, end_date, width=600, height=300):
     """Creating time-series chart
 
     Returns a time-series chart that visualises daily performance of a campaign
