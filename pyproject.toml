@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dscigametrics"
-version = "0.1.0"
+version = "0.0.0"
 description = "Computing Google Analytics Metrics!"
 authors = ["Beth Ou Yang, Ian MacCarthy, Weilin Han, Yili Tang"]
 license = "MIT"
