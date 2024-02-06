@@ -77,8 +77,7 @@ average transaction revenue: $501.6551724137931
 ```
 summary = stat_summary(data, campaign_id, start_date, end_date)
 ```
-<img src="[https://github.com/UBC-MDS/Group_9_GA_Metrics/blob/main/img/scatter_plot.jpg](https://github.com/UBC-MDS/Group_9_GA_Metrics/blob/main/img/table.jpg)?raw=true" width="500" height="500">
-
+<img src="https://github.com/UBC-MDS/Group_9_GA_Metrics/blob/main/img/table.jpg?raw=true" width="500" height="500">
 
 **Create daily plot:**
 ```
