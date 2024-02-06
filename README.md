@@ -67,10 +67,10 @@ end_date = 20220831
 ```
 metrics_dictionary = compute_metrics(data, campaign_id, start_date, end_date)
 ```
-conversion rate: 0.116 
-new to return rate: 0.88 
-total transaction revenue: $14548.0 
-average transaction revenue: $501.6551724137931
+\ conversion rate: 0.116 
+\ new to return rate: 0.88 
+\ total transaction revenue: $14548.0 
+\ average transaction revenue: $501.6551724137931
 
 **Calculate Summary Statistics:**
 ```
