@@ -67,11 +67,16 @@ end_date = 20220831
 ```
 metrics_dictionary = compute_metrics(data, campaign_id, start_date, end_date)
 ```
+conversion rate: 0.116 
+new to return rate: 0.88 
+total transaction revenue: $14548.0 
+average transaction revenue: $501.6551724137931
 
 **Calculate Summary Statistics:**
 ```
 summary = stat_summary(data, campaign_id, start_date, end_date)
 ```
+
 
 **Create daily plot:**
 ```
@@ -94,6 +99,7 @@ best_worst_campaigns = find_campaigns(
     metric=metric
 )
 ```
+{'best_campaign': {'id': 123851219, 'value': 0.116}, 'worst_campaign': {'id': 219011657, 'value': 0.056}}
 
 ## Online Documentation
 
