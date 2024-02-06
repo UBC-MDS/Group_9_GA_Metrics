@@ -5,10 +5,12 @@ def compute_metrics(data, campaign_id, start_date, end_date):
     """Computes the key metrics.
 
     Computes four metrics from Google Analytics data: 
-        1. New to return rate
-        2. Conversion rate
-        3. Total transaction revenue
-        4. Average transaction revenue
+        1. Ratio of new to returning visitors: measures the ratio of new users to returning users
+           of each campaign in certain period.
+        2. Conversion rate: measures the percentage of users who complete a specific desired action 
+           of each campaign in certain period.
+        3. Total transaction revenue: measures total transaction revenue of each campaign in certain period.
+        4. Average transaction revenue: measures average transaction revenue of each campaign in certain period.
 
     Parameters
     ----------
